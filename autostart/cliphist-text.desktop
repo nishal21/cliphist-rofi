@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Cliphist Text Daemon
+Exec=wl-paste --type text --watch cliphist store
+Terminal=false

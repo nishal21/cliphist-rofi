@@ -1,0 +1,177 @@
+/* Windows 11 clipboard — compact horizontal list */
+
+configuration {
+    hide-active-window: true;
+    click-to-exit:    true;
+    kb-cancel:        "Escape,Control+g,Control+bracketleft";
+}
+
+* {
+    background-color: transparent;
+    text-color:         #F3F3F3FF;
+
+    col-bg:             #202020F5;
+    col-card:           #2C2C2CFF;
+    col-card-hover:     #383838FF;
+    col-input:          #2C2C2CFF;
+    col-border:         #FFFFFF1A;
+    col-border-focus:   #FFFFFFAA;
+    col-muted:          #9A9A9AFF;
+    col-action:         #60CDFFFF;
+    col-pin:            #FCE100FF;
+
+    font: "Segoe UI Variable Text, Segoe UI, Inter, Noto Sans 10";
+}
+
+window {
+    background-color: @col-bg;
+    border: 1px;
+    border-color: @col-border;
+    border-radius: 12px;
+    width: 380px;
+    location: east;
+    anchor: north;
+    x-offset: -16px;
+    y-offset: 72px;
+    padding: 0px;
+}
+
+mainbox {
+    children: [ "inputbar", "listview" ];
+    spacing: 6px;
+    padding: 12px 12px 10px 12px;
+}
+
+inputbar {
+    children: [ "prompt", "entry" ];
+    spacing: 8px;
+    padding: 0px 0px 2px 0px;
+}
+
+prompt {
+    enabled: true;
+    background-color: transparent;
+    text-color: #F3F3F3FF;
+    font: "Segoe UI Variable Display, Segoe UI Semibold, Inter Semibold 12";
+}
+
+entry {
+    background-color: @col-input;
+    text-color: #F3F3F3FF;
+    placeholder: "Search · Esc to close";
+    placeholder-color: @col-muted;
+    border: 1px;
+    border-color: @col-border;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: text;
+    vertical-align: 0.5;
+}
+
+case-indicator {
+    enabled: false;
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    cycle: true;
+    dynamic: false;
+    fixed-height: true;
+    scrollbar: true;
+    spacing: 4px;
+    padding: 0px;
+    border: 0px;
+}
+
+scrollbar {
+    handle-color: #60CDFF66;
+    handle-width: 4px;
+    border-radius: 4px;
+    padding: 0px 2px;
+}
+
+element {
+    orientation: horizontal;
+    border-radius: 6px;
+    padding: 6px 10px;
+    spacing: 10px;
+}
+
+element-icon {
+    size: 48px;
+    vertical-align: 0.5;
+    background-color: transparent;
+}
+
+element-text {
+    vertical-align: 0.5;
+    expand: true;
+    background-color: transparent;
+    text-color: #E8E8E8FF;
+}
+
+element normal.normal {
+    background-color: @col-card;
+    text-color: #E8E8E8FF;
+}
+
+element alternate.normal {
+    background-color: @col-card;
+    text-color: #E8E8E8FF;
+}
+
+element selected.normal {
+    background-color: @col-card-hover;
+    text-color: #FFFFFFFF;
+    border: 1px;
+    border-color: @col-border-focus;
+    padding: 5px 9px;
+}
+
+element selected.normal element-text {
+    text-color: #FFFFFFFF;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color: @col-card;
+    text-color: @col-action;
+    font: "Segoe UI Variable Text, Segoe UI, Inter 10";
+    border: 0px;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+element selected.urgent {
+    background-color: @col-card-hover;
+    text-color: #FFFFFFFF;
+    border: 1px;
+    border-color: @col-border;
+    border-radius: 6px;
+    padding: 5px 9px;
+}
+
+element normal.active,
+element alternate.active {
+    background-color: #3A3528FF;
+    text-color: @col-pin;
+    border: 0px 0px 0px 2px;
+    border-color: @col-pin;
+    border-radius: 6px;
+    padding: 6px 10px 6px 8px;
+}
+
+element selected.active {
+    background-color: @col-card-hover;
+    text-color: @col-pin;
+    border: 1px 1px 1px 2px;
+    border-color: @col-pin;
+    padding: 5px 9px 5px 7px;
+}
+
+element normal.active element-text,
+element alternate.active element-text,
+element selected.active element-text {
+    text-color: @col-pin;
+}
